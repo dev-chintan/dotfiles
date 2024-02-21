@@ -12,7 +12,9 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = { 
                 -- C/C++
-                "clangd", 
+                "clangd",
+                -- Go
+                "gopls",
                 -- Java
                 "jdtls",
                 -- Python
