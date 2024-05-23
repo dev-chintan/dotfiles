@@ -19,8 +19,10 @@ return {
                 "jdtls",
                 -- Python
                 "pyright",
-                --JavaScript/TypeScript
-                "tsserver"
+                -- JavaScript/TypeScript
+                "tsserver",
+                -- Zig
+                "zls",
             },
             handlers = {
                 function (server_name)

@@ -21,23 +21,4 @@ return {
             -- TransparentBackground()
         end
     },
-    {
-        "ayu-theme/ayu-vim",
-        name = "ayu",
-        --priority = 1000,
-        config = function()
-            --vim.cmd.colorscheme("ayu")
-            --TransparentBackground()
-        end
-    },
-    { 
-        "rose-pine/neovim", 
-        name = "rose-pine",
-        --priority = 1000,
-        disable_italics = true,
-        config = function()
-            --vim.cmd.colorscheme("rose-pine")
-            --TransparentBackground()
-        end,
-    },
 }
