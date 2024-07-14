@@ -13,8 +13,12 @@ return {
             ensure_installed = { 
                 -- C/C++
                 "clangd",
+                -- CSS
+                "cssls",
                 -- Go
                 "gopls",
+                -- HTML,
+                "html",
                 -- Java
                 "jdtls",
                 -- Python
