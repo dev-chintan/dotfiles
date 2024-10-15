@@ -6,31 +6,34 @@ return {
         "j-hui/fidget.nvim"
     },
     config = function ()
+        -- Set up capabilities and disable spell-check globally
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities.textDocument.publishDiagnostics.spellCheck = false
+
+        -- Function to handle LSP key mappings
+        local on_attach = function(_, bufnr)
+            local opts = { noremap = true, silent = true }
+            local keymap = vim.api.nvim_buf_set_keymap
+            keymap(bufnr, 'n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+            keymap(bufnr, 'n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+            keymap(bufnr, 'n', '<leader>K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+            keymap(bufnr, 'n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+        end
+
+        -- Set up the plugins
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = {
-                "html",
-                "cssls",
-                "harper_ls"
-            },
+            ensure_installed = { "html", "cssls", "harper_ls" },
             handlers = {
                 function (server_name)
-                    require("lspconfig")[server_name].setup{
-                        on_attach = function(client, bufnr)
-                            -- Key mappings for LSP
-                            local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-                            local opts = { noremap = true, silent = true }
-
-                            -- LSP key mappings
-                            buf_set_keymap('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-                            buf_set_keymap('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-                            buf_set_keymap('n', '<leader>K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-                            buf_set_keymap('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-                        end,
-                    }
+                    require("lspconfig")[server_name].setup({
+                        capabilities = capabilities, -- Apply shared capabilities
+                        on_attach = on_attach, -- Use shared on_attach
+                    })
                 end,
             }
         })
     end,
 }
+
