@@ -1,0 +1,25 @@
+working_directory = "./Developer"
+
+[font]
+normal.family = "Iosevka"
+normal.style = "Regular"
+italic.family = "Iosevka"
+italic.style = "Regular"
+bold_italic.family = "Iosevka"
+bold_italic.style = "Regular"
+size = 18 
+
+[window]
+dimensions.columns = 100
+dimensions.lines = 30
+dynamic_title = true
+option_as_alt = "Both"
+padding.y = 10
+
+[cursor]
+style.blinking = "Never"
+unfocused_hollow = true
+
+[env]
+TERM = "xterm-256color"
+
