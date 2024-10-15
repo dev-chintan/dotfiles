@@ -6,11 +6,7 @@ return {
         "j-hui/fidget.nvim"
     },
     config = function ()
-        -- Set up capabilities and disable spell-check globally
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities.textDocument.publishDiagnostics.spellCheck = false
-
-        -- Function to handle LSP key mappings
+         -- Function to handle LSP key mappings
         local on_attach = function(_, bufnr)
             local opts = { noremap = true, silent = true }
             local keymap = vim.api.nvim_buf_set_keymap
@@ -24,11 +20,17 @@ return {
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = { "html", "cssls", "harper_ls" },
+            ensure_installed = {
+                "clangd",
+                "html",
+                "cssls",
+                "gopls",
+                "pyright",
+                "ts_ls",
+            },
             handlers = {
                 function (server_name)
                     require("lspconfig")[server_name].setup({
-                        capabilities = capabilities, -- Apply shared capabilities
                         on_attach = on_attach, -- Use shared on_attach
                     })
                 end,
