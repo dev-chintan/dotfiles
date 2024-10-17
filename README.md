@@ -1,5 +1,5 @@
 # dotfiles 
 
-font: Isoveka
-style: Regular
+font: FiraCode Nerd Font 
+style: Retina 
 terminal : Alarictty

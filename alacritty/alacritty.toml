@@ -1,13 +1,9 @@
 working_directory = "./Developer"
 
 [font]
-normal.family = "Iosevka"
-normal.style = "Regular"
-italic.family = "Iosevka"
-italic.style = "Regular"
-bold_italic.family = "Iosevka"
-bold_italic.style = "Regular"
-size = 18 
+normal.family = "FiraCode Nerd Font"
+normal.style = "Retina"
+size = 16 
 
 [window]
 dimensions.columns = 100
