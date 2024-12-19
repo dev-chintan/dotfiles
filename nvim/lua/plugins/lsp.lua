@@ -26,7 +26,6 @@ return {
                 "cssls",
                 "gopls",
                 "pyright",
-                "rust_analyzer",
                 "ts_ls",
             },
             handlers = {

@@ -11,7 +11,6 @@ return {
                 "css",
                 "javascript",
                 "typescript",
-                "rust",
                 "lua",
                 "python",
             },
